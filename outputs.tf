@@ -46,3 +46,12 @@ output "private_subnets_route_table" {
   value = element(concat(aws_route_table.private_routetable.*.id, [""]), 0)
 }
 
+output "subnet_azs" {
+  value = [
+    for subnet in aws_subnet.public_subnet :
+    {
+      az     = subnet.availability_zone
+      subnet = subnet.id
+    }
+  ]
+}
