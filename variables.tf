@@ -73,3 +73,9 @@ variable "enable_create_defaults" {
   type        = bool
   default     = false
 }
+
+variable "cidr_subnet_bits" {
+  description = "Number of bits to use for subnet cidr blocks"
+  type        = number
+  default     = 8
+}
