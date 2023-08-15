@@ -28,7 +28,6 @@ resource "aws_vpc" "vpc" {
   ipv6_ipam_pool_id                = ""
   enable_dns_support               = true
   enable_dns_hostnames             = true
-  assign_generated_ipv6_cidr_block = true
   tags                             = local.tags
 }
 
