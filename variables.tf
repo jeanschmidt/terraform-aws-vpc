@@ -20,6 +20,12 @@ variable "cidr_block" {
   default     = "10.0.0.0/16"
 }
 
+variable "cidr_block" {
+  description = "The IPv6 CIDR block used for the VPC."
+  type        = string
+  default     = "2600:1f18:7a6a:::/48"
+}
+
 variable "availability_zones" {
   description = "List to specify the availability zones for which subnes will be created. By default all availability zones will be used."
   type        = list

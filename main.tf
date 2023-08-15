@@ -24,6 +24,7 @@ locals {
 
 resource "aws_vpc" "vpc" {
   cidr_block                       = cidrsubnet(var.cidr_block, 0, 0)
+  ipv6_cidr_block                  = cidrsubnet(var.cidr_ipv6_block, 0, 0)
   enable_dns_support               = true
   enable_dns_hostnames             = true
   assign_generated_ipv6_cidr_block = true
