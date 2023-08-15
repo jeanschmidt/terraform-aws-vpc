@@ -25,6 +25,7 @@ locals {
 resource "aws_vpc" "vpc" {
   cidr_block                       = cidrsubnet(var.cidr_block, 0, 0)
   ipv6_cidr_block                  = cidrsubnet(var.cidr_ipv6_block, 0, 0)
+  ipv6_ipam_pool_id                = ""
   enable_dns_support               = true
   enable_dns_hostnames             = true
   assign_generated_ipv6_cidr_block = true
@@ -123,7 +124,6 @@ resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = cidrsubnet(var.cidr_block, var.cidr_subnet_bits, count.index)
   ipv6_cidr_block         = cidrsubnet(aws_vpc.vpc.ipv6_cidr_block, var.cidr_subnet_bits, count.index)
-  ipv6_ipam_pool_id       = ""
   availability_zone       = element(local.az, count.index)
   map_public_ip_on_launch = var.public_subnet_map_public_ip_on_launch
   count                   = length(local.az)
